@@ -1,0 +1,38 @@
+$(function(){
+$("#signup").submit(function(){
+var dataString = $("#signup").serialize();
+$("#inputPassword").val('');
+$.ajax({
+type: "POST",
+url: "signup.php",
+data: dataString,
+timeout: 5000,
+error: function (xhr, err) {
+$("#msg").html(xhr.responseText + xhr.readyState + xhr.status);
+},
+success: function(data) {
+$("#msg").html(data);
+}
+});
+return false;
+});
+
+$("#login").submit(function(){
+var dataString = $("#login").serialize();
+$("#password").val('');
+$.ajax({
+type: "POST",
+url: "login.php",
+data: dataString,
+timeout: 5000,
+error: function (xhr, err) {
+$("#msg2").html(xhr.responseText + xhr.readyState + xhr.status);
+},
+success: function(data) {
+$("#msg2").html(data);
+}
+});
+return false;
+});
+
+});
